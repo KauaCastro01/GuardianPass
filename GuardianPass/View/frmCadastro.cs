@@ -15,6 +15,10 @@ namespace GuardianPass
 {
     public partial class frmCadastro : Form
     {
+        HashSenha hashSenha = new HashSenha(SHA256.Create());
+        Conexao conexao = new Conexao();
+
+        #region Eventos
         public frmCadastro()
         {
             InitializeComponent();
@@ -22,45 +26,7 @@ namespace GuardianPass
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if(txtBoxUsuario.Text.Length < 4)
-            {
-                MessageBox.Show("O nome de usuário deve ter pelo menos 4 caracteres.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (txtBoxSenha.Text.Length < 6)
-            {
-                MessageBox.Show("A senha deve ter pelo menos 6 caracteres.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (txtBoxSenha.Text != txtBoxSenhaNovamente.Text)
-            {
-                MessageBox.Show("As senhas não coincidem.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            HashSenha hashSenha = new HashSenha(SHA256.Create());
-            Conexao conexao = new Conexao();
-
-            if (conexao.Cadastro(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text)))
-            {
-                DadosUsuario user = new DadosUsuario
-                {
-                    Id = conexao.PegarId(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text)),
-                    Usuario = txtBoxUsuario.Text,
-                    Senha = txtBoxSenha.Text,
-                    Exigir = conexao.PegarExigirSenha(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text))
-                };
-                user.Salvar(user);
-
-
-
-                frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
-                frmMenuPrincipal.Show();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Erro ao realizar o cadastro. Tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            VerificarCampos();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -75,5 +41,62 @@ namespace GuardianPass
             txtBoxSenha.UseSystemPasswordChar = !cBoxMostrarSenha.Checked;
             txtBoxSenhaNovamente.UseSystemPasswordChar = !cBoxMostrarSenha.Checked;
         }
+
+        #endregion
+
+        #region Metodos
+        private void ExibirMesagemErro(string mensagem)
+        {
+            MessageBox.Show(mensagem, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void ExibirMesagemSucesso(string mensagem)
+        {
+            MessageBox.Show(mensagem, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void VerificarCampos()
+        {
+            if (txtBoxUsuario.Text.Length < 4)
+                { ExibirMesagemErro("O nome de usuário deve ter pelo menos 4 caracteres."); return; }
+            if (txtBoxSenha.Text.Length < 6)
+                { ExibirMesagemErro("A senha deve ter pelo menos 6 caracteres."); return; }
+            if (txtBoxSenha.Text != txtBoxSenhaNovamente.Text)
+                { ExibirMesagemErro("As senhas não coincidem."); return; }
+
+            CadastrarUsuario();
+        }
+
+        private void CadastrarUsuario()
+        {
+            if (conexao.Cadastro(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text)))
+            {
+                PopularClasse();
+                AbrirFormsMenuPrincipal();
+            }
+            else
+                ExibirMesagemErro("Erro ao realizar o cadastro. Tente novamente.");
+        }
+
+        private void AbrirFormsMenuPrincipal()
+        {
+            frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
+            frmMenuPrincipal.Show();
+            this.Close();
+        }
+
+        private void PopularClasse()
+        {
+            DadosUsuario user = new DadosUsuario
+            {
+                Id = conexao.PegarId(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text)),
+                Usuario = txtBoxUsuario.Text,
+                Senha = txtBoxSenha.Text,
+                Exigir = conexao.PegarExigirSenha(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text))
+            };
+            user.Salvar(user);
+        }
+
+        #endregion
     }
 }

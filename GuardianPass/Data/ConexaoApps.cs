@@ -42,7 +42,7 @@ namespace GuardianPass.Data
                     // Query corrigida
                     command.CommandText = "SELECT * FROM GP_Apps WHERE Site LIKE @site AND UsuarioId = @usuarioId;";
                     command.Parameters.AddWithValue("@site", $"%{site}%");// % para busca parcial
-                    command.Parameters.AddWithValue("@usuaioId", user.Id);
+                    command.Parameters.AddWithValue("@usuarioId", user.Id);
 
                     DataTable dt = new DataTable();
                     dt.Load(command.ExecuteReader());

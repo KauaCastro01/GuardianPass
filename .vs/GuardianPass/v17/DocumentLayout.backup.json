@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Projetos\\GuardianPass\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5EED8947-EF00-473C-8A5A-47CC4C2E5AAA}|GuardianPass\\GuardianPass.csproj|c:\\projetos\\guardianpass\\guardianpass\\view\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EED8947-EF00-473C-8A5A-47CC4C2E5AAA}|GuardianPass\\GuardianPass.csproj|solutionrelative:guardianpass\\view\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EED8947-EF00-473C-8A5A-47CC4C2E5AAA}|GuardianPass\\GuardianPass.csproj|C:\\Projetos\\GuardianPass\\guardianpass\\view\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5EED8947-EF00-473C-8A5A-47CC4C2E5AAA}|GuardianPass\\GuardianPass.csproj|solutionrelative:guardianpass\\view\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +31,31 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmMenuPrincipal.cs",
+              "DocumentMoniker": "C:\\Projetos\\GuardianPass\\GuardianPass\\View\\frmMenuPrincipal.cs",
+              "RelativeDocumentMoniker": "GuardianPass\\View\\frmMenuPrincipal.cs",
+              "ToolTip": "C:\\Projetos\\GuardianPass\\GuardianPass\\View\\frmMenuPrincipal.cs",
+              "RelativeToolTip": "GuardianPass\\View\\frmMenuPrincipal.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T23:53:14.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmMenuPrincipal.cs [Design]",
+              "DocumentMoniker": "C:\\Projetos\\GuardianPass\\GuardianPass\\View\\frmMenuPrincipal.cs",
+              "RelativeDocumentMoniker": "GuardianPass\\View\\frmMenuPrincipal.cs",
+              "ToolTip": "C:\\Projetos\\GuardianPass\\GuardianPass\\View\\frmMenuPrincipal.cs [Design]",
+              "RelativeToolTip": "GuardianPass\\View\\frmMenuPrincipal.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T23:53:10.476Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

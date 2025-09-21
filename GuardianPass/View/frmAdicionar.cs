@@ -16,6 +16,10 @@ namespace GuardianPass
     public partial class frmAdicionar : Form
     {
         public DadosApp dadosapp = null;
+        ConexaoApps apps = new ConexaoApps();
+        HashSenha hashSenha = new HashSenha(SHA256.Create());
+
+        #region Eventos
         public frmAdicionar(DadosApp app = null)
         {
             this.dadosapp = app;
@@ -24,36 +28,10 @@ namespace GuardianPass
                 CarregarDadosApp(app);
         }
 
-        public void CarregarDadosApp(DadosApp app)
-        {
-            if (app != null)
-            {
-                txtBoxUsuario.Text = app.Usuario;
-                txtBoxSenha.Text = app.Senha;
-                txtBoxSiteApp.Text = app.SiteApp;
-            }
-        }
-
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (dadosapp != null)
-            {
-                VerificarCampos();
-                ConexaoApps apps = new ConexaoApps();
-                HashSenha hashSenha = new HashSenha(SHA256.Create());
-
-                if (apps.AtualizarApp(txtBoxUsuario.Text, txtBoxSenha.Text, txtBoxSiteApp.Text, dadosapp.Usuario, dadosapp.SiteApp))
-                {
-                    MessageBox.Show("Dados atualizados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmExibir frmExibir = new frmExibir();
-                    frmExibir.Show();
-                    this.Close();
-                }
-                else
-                    MessageBox.Show("Erro ao atualizar os dados. Tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-                
+                AtualizarApp();
             else
                 SalvarDados();
         }
@@ -75,6 +53,56 @@ namespace GuardianPass
             txtBoxSenha.UseSystemPasswordChar = !cBoxMostrarSenha.Checked;
         }
 
+        #endregion
+
+        #region Metodos
+        public void CarregarDadosApp(DadosApp app)
+        {
+            if (app != null)
+            {
+                txtBoxUsuario.Text = app.Usuario;
+                txtBoxSenha.Text = app.Senha;
+                txtBoxSiteApp.Text = app.SiteApp;
+            }
+        }
+
+        private void ExibirMesagemSucesso(string mensagem)
+        {
+            MessageBox.Show(mensagem, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ExibirMesagemErro(string mensagem)
+        {
+            MessageBox.Show(mensagem, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void AtualizarApp()
+        {
+            try
+            {
+                VerificarCampos();
+                if (apps.AtualizarApp(txtBoxUsuario.Text, txtBoxSenha.Text, txtBoxSiteApp.Text, dadosapp.Usuario, dadosapp.SiteApp))
+                {
+                    ExibirMesagemSucesso("Dados atualizados com sucesso!");
+                    AbrirFormsExibir();
+                }
+                else
+                    ExibirMesagemErro("Erro ao atualizar os dados. Tente novamente.");
+            }
+            catch (Exception ex)
+            {
+                ExibirMesagemErro("Ocorreu um erro: " + ex.Message);
+                return;
+            }
+        }
+
+        private void AbrirFormsExibir()
+        {
+            frmExibir frmExibir = new frmExibir();
+            frmExibir.Show();
+            this.Close();
+        }
+
         public void Limpar()
         {
             txtBoxUsuario.Clear();
@@ -85,37 +113,32 @@ namespace GuardianPass
         public void VerificarCampos()
         {
             if (txtBoxUsuario.Text.Length < 4)
-            {
-                MessageBox.Show("O usuário deve ter pelo menos 4 caracteres.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
+            { ExibirMesagemErro("O usuário deve ter pelo menos 4 caracteres."); return; }
             if (txtBoxSenha.Text.Length < 4)
-            {
-                MessageBox.Show("A senha deve ter pelo menos 4 caracteres.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            { ExibirMesagemErro("A senha deve ter pelo menos 4 caracteres."); return; }
             if (txtBoxSiteApp.Text.Length < 3)
-            {
-                MessageBox.Show("O site ou aplicativo deve ter pelo menos 3 caracteres.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            { ExibirMesagemErro("O site ou aplicativo deve ter pelo menos 3 caracteres."); return; }
         }
 
         public void SalvarDados()
         {
-            VerificarCampos();
-            ConexaoApps apps = new ConexaoApps();
-            HashSenha hashSenha = new HashSenha(SHA256.Create());
-            if (apps.CadastrarApps(txtBoxUsuario.Text, txtBoxSenha.Text, txtBoxSiteApp.Text))
+            try
             {
-                MessageBox.Show("Cadastro realizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Limpar();
+                VerificarCampos();
+                if (apps.CadastrarApps(txtBoxUsuario.Text, txtBoxSenha.Text, txtBoxSiteApp.Text))
+                {
+                    ExibirMesagemSucesso("Cadastro realizado com sucesso!");
+                    Limpar();
+                }
+                else
+                    ExibirMesagemErro("Erro ao cadastrar. Tente novamente.");
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Erro ao cadastrar. Tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExibirMesagemErro("Ocorreu um erro: " + ex.Message);
+                return;
             }
         }
+        #endregion
     }
 }

@@ -100,9 +100,11 @@ C:\Projetos\GuardianPass\GuardianPass\bin\Release\net8.0-windows\runtimes\win-ar
 C:\Projetos\GuardianPass\GuardianPass\bin\Release\net8.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Projetos\GuardianPass\GuardianPass\bin\Release\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.csproj.AssemblyReference.cache
+C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.Properties.Resources.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.Form1.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmAdicionar.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmAlterarSenha.resources
+C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmAvaliacao.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmCadastro.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmConfig.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmExibir.resources
@@ -110,7 +112,6 @@ C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.fr
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmGerarSenha.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmLogin.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmMenuPrincipal.resources
-C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.Properties.Resources.resources
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.csproj.GenerateResource.cache
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.GeneratedMSBuildEditorConfig.editorconfig
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.AssemblyInfoInputs.cache
@@ -122,4 +123,3 @@ C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\refint\Guardian
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.pdb
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.genruntimeconfig.cache
 C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\ref\GuardianPass.dll
-C:\Projetos\GuardianPass\GuardianPass\obj\Release\net8.0-windows\GuardianPass.frmAvaliacao.resources

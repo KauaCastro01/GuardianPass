@@ -14,6 +14,9 @@ namespace GuardianPass
     public partial class frmExigirSenha : Form
     {
         DadosApp dadosApp = null;
+        DadosUsuario user = new DadosUsuario();
+
+        #region Eventos
         public frmExigirSenha(DadosApp dadosApp)
         {
             this.dadosApp = dadosApp;
@@ -25,29 +28,37 @@ namespace GuardianPass
             txtBoxSenha.UseSystemPasswordChar = !cBoxMostrarSenha.Checked;
         }
 
-        private void btnEntrar_Click(object sender, EventArgs e)
-        {
-            DadosUsuario user = new DadosUsuario();
-            user = user.Carregar();
-            if (txtBoxSenha.Text == user.Senha)
-            {
-                frmAdicionar frmAdicionar = new frmAdicionar(dadosApp);
-                frmAdicionar.Show();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Senha incorreta. Tente novamente.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtBoxSenha.Clear();
-                txtBoxSenha.Focus();
-            }
-        }
-
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
             frmMenuPrincipal.Show();
             this.Close();
         }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            VerificarSenha();
+        }
+
+        #endregion
+
+        #region Metodos
+        private void VerificarSenha()
+        {
+            user = user.Carregar();
+            if (txtBoxSenha.Text == user.Senha)
+                AbrirForms();
+            else
+                MessageBox.Show("Senha incorreta. Tente novamente.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void AbrirForms()
+        {
+            frmAdicionar frmAdicionar = new frmAdicionar(dadosApp);
+            frmAdicionar.Show();
+            this.Close();
+        }
+
+        #endregion
     }
 }

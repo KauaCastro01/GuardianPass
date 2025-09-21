@@ -12,32 +12,22 @@ namespace GuardianPass
 {
     public partial class frmAvaliacao : Form
     {
+        #region Eventos
         public frmAvaliacao()
         {
             InitializeComponent();
         }
+        #endregion
 
-        public void Verificao()
+        #region Metodos
+        private void ExibirMesagemErro(string mensagem)
         {
-            if (int.TryParse(txtNota.Text, out int nota))
-            {
-                if (nota >= 0 && nota <= 5)
-                {
-                    MessageBox.Show("Obrigado pela sua avaliação!", "Avaliação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AbrirForms();
-                }
-                else
-                    MessageBox.Show("Por favor, insira uma nota válida entre 0 e 5.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-                MessageBox.Show("Por favor, insira uma nota válida entre 0 e 5.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(mensagem, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void AbrirForms()
+        private void ExibirMesagemSucesso(string mensagem)
         {
-            frmConfig config = new frmConfig();
-            config.Show();
-            this.Close();
+            MessageBox.Show(mensagem, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void txtNota_KeyPress(object sender, KeyPressEventArgs e)
@@ -55,5 +45,30 @@ namespace GuardianPass
         {
             AbrirForms();
         }
+
+        private void Verificao()
+        {
+            if (int.TryParse(txtNota.Text, out int nota))
+            {
+                if (nota >= 0 && nota <= 5)
+                {
+                    ExibirMesagemSucesso("Avaliação enviada com sucesso!");
+                    AbrirForms();
+                }
+                else
+                    ExibirMesagemErro("Por favor, insira uma nota válida entre 0 e 5.");
+            }
+            else
+                ExibirMesagemErro("Por favor, insira uma nota válida entre 0 e 5.");
+        }
+
+        public void AbrirForms()
+        {
+            frmConfig config = new frmConfig();
+            config.Show();
+            this.Close();
+        }
+
+        #endregion
     }
 }

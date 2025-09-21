@@ -12,18 +12,11 @@ namespace GuardianPass
 {
     public partial class frmGerarSenha : Form
     {
+        #region Eventos
         public frmGerarSenha()
         {
             InitializeComponent();
             OrganizarValores();
-        }
-
-        public void OrganizarValores()
-        {
-            nupQuantidade.Value = 12;
-            cBoxLetra.Checked = true;
-            cBoxNumeros.Checked = true;
-            cBoxSimbolos.Checked = true;
         }
 
         private void btnGerar_Click(object sender, EventArgs e)
@@ -38,21 +31,44 @@ namespace GuardianPass
             this.Close();
         }
 
+        private void btnCopiar_Click(object sender, EventArgs e)
+        {
+            CopiarSenha();
+        }
+
+        #endregion
+
+        #region Metodos
+        public void OrganizarValores()
+        {
+            nupQuantidade.Value = 12;
+            cBoxLetra.Checked = true;
+            cBoxNumeros.Checked = true;
+            cBoxSimbolos.Checked = true;
+        }
+
+        private void ExibirMesagemDeErro(string mensagem)
+        {
+            MessageBox.Show(mensagem, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private bool VerificarCaixasDeSelecao(bool usarLetras, bool usarNumeros, bool usarSimbolos)
+        {
+            if (!usarLetras && !usarNumeros && !usarSimbolos)
+                { ExibirMesagemDeErro("Você precisa selecionar pelo menos uma opção."); return true; }
+            else
+                return false;
+        }
+
         public string GeradorDeSenha(decimal tamanho, bool usarLetras, bool usarNumeros, bool usarSimbolos)
         {
-            Random random = new Random();
-
-            if (!usarLetras && !usarNumeros && !usarSimbolos)
-            {
-                MessageBox.Show("Você precisa selecionar pelo menos uma opção.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return string.Empty;
-            }
-                
-
-            
             string letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             string numeros = "0123456789";
             string simbolos = "!@#$%^&*()-_=+[]{};:,.<>?";
+            Random random = new Random();
+
+            if (VerificarCaixasDeSelecao(usarLetras, usarNumeros, usarSimbolos))
+                return string.Empty;
 
             StringBuilder caracteresPossiveis = new StringBuilder();
 
@@ -71,7 +87,7 @@ namespace GuardianPass
             return senha.ToString();
         }
 
-        private void btnCopiar_Click(object sender, EventArgs e)
+        private void CopiarSenha()
         {
             if (!string.IsNullOrEmpty(txtBoxSenha.Text))
             {
@@ -81,5 +97,7 @@ namespace GuardianPass
             else
                 MessageBox.Show("Não há senha para copiar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        #endregion
     }
 }

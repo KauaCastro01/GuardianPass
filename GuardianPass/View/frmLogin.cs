@@ -16,57 +16,20 @@ namespace GuardianPass
 {
     public partial class frmLogin : Form
     {
+        LembrarDeMim lembrarDeMim = new LembrarDeMim();
+        HashSenha hashSenha = new HashSenha(SHA256.Create());
+        Conexao conexao = new Conexao();
+
+        #region Eventos
         public frmLogin()
         {
             InitializeComponent();
             CarregarLembrarDeMim();
         }
 
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        public void CarregarLembrarDeMim()
-        {
-            LembrarDeMim lembrarDeMim = new LembrarDeMim();
-            if (Properties.Settings.Default.Lembrar)
-            {
-                txtBoxUsuario.Text = Properties.Settings.Default.Usuario;
-                txtBoxSenha.Text = Properties.Settings.Default.Senha;
-                cBoxLembrarDeMim.Checked = true;
-            }
-            else
-            {
-                txtBoxUsuario.Text = "";
-                txtBoxSenha.Text = "";
-                cBoxLembrarDeMim.Checked = false;
-            }
-        }
-
-
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            HashSenha hashSenha = new HashSenha(SHA256.Create());
-            Conexao conexao = new Conexao();
-
-            if (conexao.Login(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text)))
-            {
-                DadosUsuario user = new DadosUsuario
-                {
-                    Id = conexao.PegarId(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text)),
-                    Usuario = txtBoxUsuario.Text,
-                    Senha = txtBoxSenha.Text,
-                    Exigir = conexao.PegarExigirSenha(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text))
-                };
-                user.Salvar(user);
-
-                frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
-                frmMenuPrincipal.Show();
-                this.Close();
-            }
-            else
-                MessageBox.Show("Usuário ou senha inválidos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            EfetuarLogin();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -83,11 +46,71 @@ namespace GuardianPass
 
         private void cBoxLembrarDeMim_CheckedChanged(object sender, EventArgs e)
         {
-            LembrarDeMim lembrarDeMim = new LembrarDeMim();
+            LembrarDeMim();
+        }
+
+        #endregion
+
+        #region Metodos
+        public void CarregarLembrarDeMim()
+        {
+            if (Properties.Settings.Default.Lembrar)
+            {
+                txtBoxUsuario.Text = Properties.Settings.Default.Usuario;
+                txtBoxSenha.Text = Properties.Settings.Default.Senha;
+                cBoxLembrarDeMim.Checked = true;
+            }
+            else
+            {
+                txtBoxUsuario.Text = "";
+                txtBoxSenha.Text = "";
+                cBoxLembrarDeMim.Checked = false;
+            }
+        }
+
+        private void EfetuarLogin()
+        {
+            if (conexao.Login(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text)))
+            {
+                PopularDadosUsuario();
+                AbrirFomrsMenuPrincipal();
+            }
+            else
+                ExibirMensagemErro("Usuário ou senha inválidos.");
+        }
+
+        private void PopularDadosUsuario()
+        {
+            DadosUsuario user = new DadosUsuario
+            {
+                Id = conexao.PegarId(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text)),
+                Usuario = txtBoxUsuario.Text,
+                Senha = txtBoxSenha.Text,
+                Exigir = conexao.PegarExigirSenha(txtBoxUsuario.Text, hashSenha.CriptografarSenha(txtBoxSenha.Text))
+            };
+            user.Salvar(user);
+        }
+
+        private void AbrirFomrsMenuPrincipal()
+        {
+            frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
+            frmMenuPrincipal.Show();
+            this.Close();
+        }
+
+        private void ExibirMensagemErro(string erro)
+        {
+            MessageBox.Show(erro, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void LembrarDeMim()
+        {
             if (cBoxLembrarDeMim.Checked)
                 lembrarDeMim.Salvar(txtBoxUsuario.Text, txtBoxSenha.Text, cBoxLembrarDeMim.Checked);
             else
                 lembrarDeMim.Apagar();
         }
+
+        #endregion
     }
 }

@@ -173,7 +173,6 @@
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "GuardianPass";
-            Load += frmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
