@@ -10,42 +10,42 @@ O sistema tem como objetivo **facilitar a vida dos usuários que precisam organi
 * 🏠 **Menu Inicial**
   Interface de entrada do sistema.
 
-  <img width="350" height="408" alt="{A05C564A-0997-4C00-A88C-789FBE077A03}" src="https://github.com/user-attachments/assets/7a63d2fc-2281-4f60-b858-13bd068e237a" />
+<img width="350" height="412" alt="{536E9C01-585A-43FC-B7F6-F4E747954ADB}" src="https://github.com/user-attachments/assets/36d4d837-fa90-4a3e-9075-4838d9c6a4fe" />
 
 * 🔐 **Tela de Login**
   Autenticação segura para acesso dos usuários.
 
-  <img width="410" height="448" alt="{684449AE-83FB-4A3B-BFB3-434F9AF29E1C}" src="https://github.com/user-attachments/assets/d969b6c7-9d67-468f-9138-4696a314d58c" />
+<img width="404" height="442" alt="{D18824ED-8814-4DDC-B3A6-675EDC599FED}" src="https://github.com/user-attachments/assets/460fd949-4769-463b-9ee9-e07dbb3b22bb" />
 
 * 📝 **Tela de Cadastro**
   Cadastro de novos usuários.
 
-  <img width="418" height="469" alt="{4DDA4018-8733-4F1E-AD83-C4C0A9644524}" src="https://github.com/user-attachments/assets/f7d99f0d-f43a-4746-ad09-9e3098d6d3a4" />
+<img width="416" height="466" alt="{1195B14C-284F-4676-81BB-512F2FD9BA31}" src="https://github.com/user-attachments/assets/75af092e-52ad-4c8b-a7ae-976a3cd6a113" />
 
 * 📋 **Tela Principal**
   Acesso às funcionalidades principais do GuardianPass.
 
-  <img width="800" height="486" alt="{A1149A6D-B5E0-4446-BB3C-A785164EE2E6}" src="https://github.com/user-attachments/assets/725d7433-5792-46a4-aff0-de202102c3f9" />
+<img width="798" height="481" alt="{18C42402-C312-41DC-A5A2-58EE86B9A1A1}" src="https://github.com/user-attachments/assets/715a8ed1-b269-4826-9fa4-e102eeb97d9b" />
 
 * ➕ **Adicionar Senha**
   Inclusão de novas credenciais (usuário/senha/site).
 
-  <img width="441" height="520" alt="{4BF7F8F3-A203-4FCF-8677-BA6D5656FC86}" src="https://github.com/user-attachments/assets/4e4268a9-f64e-4fb5-a973-0ea1f5b4851c" />
+<img width="437" height="533" alt="{663CD3C8-C1F7-4081-AFCE-46ED84EEF67E}" src="https://github.com/user-attachments/assets/c469e815-f366-4afd-b82d-b27b568d27fe" />
 
 * 🔒 **Gerar Senha**
   Criação automática de senhas fortes e seguras.
 
-  <img width="429" height="456" alt="{B6A4F85F-8776-4349-B887-AD7495FDAE9E}" src="https://github.com/user-attachments/assets/1f52bdfe-3b57-49e6-934f-573a75fc37c1" />
-  
+<img width="419" height="454" alt="{74B319FB-9EC5-41AE-BFEC-715AAFEA2B3C}" src="https://github.com/user-attachments/assets/9ea5dc14-56ee-47a5-b3e1-2882fcd4011e" />
+
 * 👁 **Exibir Senha**
   Visualização controlada das senhas cadastradas.
 
-  <img width="777" height="482" alt="{2D1CCE7D-12C8-4F13-8C28-87F4C601CA15}" src="https://github.com/user-attachments/assets/08997b0e-c5ba-49ba-88bc-12feed2da84c" />
+<img width="777" height="482" alt="{5D93E0BA-117F-4D82-B7F2-C6483EFFC6F2}" src="https://github.com/user-attachments/assets/5a5dab3f-29b3-4ca6-8649-a8b705930194" />
 
 * ⚙️ **xConfig**
   Personalização e ajustes do sistema (ativar/desativar senha para edição/exclusão, entre outros).
 
-  <img width="354" height="386" alt="{9FB27485-3042-415E-A1C4-7F63B3A03422}" src="https://github.com/user-attachments/assets/1db11aaf-8534-473a-9b40-4e8654b22a40" />
+<img width="357" height="391" alt="{EB6403CE-934C-42BD-BD52-4678FD543F6D}" src="https://github.com/user-attachments/assets/65f45dab-d49d-4d93-a3e7-00cc2502f6dc" />
 
 ---
 
