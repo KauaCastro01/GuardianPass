@@ -1,6 +1,6 @@
 ### 🚀 GuardianPass
 
-GuardianPass é um software desenvolvido pela RWB Software para gerenciar senhas de forma prática, segura e totalmente offline.  
+GuardianPass é um software para gerenciar senhas de forma prática, segura e totalmente offline.  
 O objetivo do sistema é centralizar contas, gerar senhas fortes e proteger seus acessos, oferecendo uma experiência simples, intuitiva e confiável.
 
 ---
@@ -113,11 +113,7 @@ Analisa o nível da senha informada e retorna uma classificação inteligente.
 
 ---
 
-### 🧑‍💻 Desenvolvido por RWB Software
-
 **👨‍💻 Desenvolvedor:** Kauã  
-**🏢 Empresa:** RWB Software  
-**📩 Contato:** RWBSoftwares@gmail.com  
 
 ---
 
