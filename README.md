@@ -123,9 +123,3 @@ Analisa o nível da senha informada e retorna uma classificação inteligente.
 - 🔄 Status: Finalizado  
 - ✅ Versão Atual: 1.0.0  
 
----
-
-### 🧾 Licença
-
-Projeto desenvolvido por **RWB Software**.  
-Todos os direitos reservados © 2025 RWB Software.
